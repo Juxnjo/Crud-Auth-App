@@ -25,6 +25,7 @@
  export const getTask = async (req, res) => {
     const task = await Task.findById(req.params.id).populate("user")
     if (!task) return res.status(404).json({message : "Task not found"})
+    res.json(task)
  }
  
   export const deleteTask = async (req, res) => {
