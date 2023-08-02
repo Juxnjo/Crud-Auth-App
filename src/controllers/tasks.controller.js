@@ -39,6 +39,6 @@
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
         new: true
     })
-    if (!task) return res.status(404).json9({message: "Task not found"})
+    if (!task) return res.status(404).json({message: "Task not found"})
     res.json(task)
  }
