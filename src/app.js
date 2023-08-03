@@ -1,16 +1,23 @@
-import express from "express"
-import morgan from "morgan"
-import cookieParser from "cookie-parser"
+import express from "express";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
-import authRoutes from './routes/auth.routes.js'
-import taskRoutes from './routes/task.routes.js'
+import authRoutes from "./routes/auth.routes.js";
+import taskRoutes from "./routes/task.routes.js";
 
-const app = express()
+const app = express();
 
-app.use(morgan("dev"))
-app.use(express.json())
-app.use(cookieParser())
-app.use('/api',authRoutes)
-app.use('/api',taskRoutes)
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(cookieParser());
 
-export default app
+app.use("/api", authRoutes);
+app.use("/api", taskRoutes);
+
+export default app;
