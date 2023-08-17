@@ -22,6 +22,12 @@ export const RegisterPage = () =>
         signup( values )
     } )
 
+    useEffect( () =>
+  {
+    if ( isAuthenticated ) navigate( '/tasks' )
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ isAuthenticated ] )
+
     return (
         <div className='flex h-[calc(100vh-100px)] items-center justify-center '>
 
