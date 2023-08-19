@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
 import { useTasks } from "../context/TasksContext";
+import { useNavigate } from "react-router-dom";
 
 export const TaskFormPage = () =>
 {
   const { register, handleSubmit } = useForm()
-  const {createTask} = useTasks()
+  const { createTask } = useTasks()
+  const navigate = useNavigate()
 
   const onSubmit = handleSubmit( ( data ) =>
   {
-    createTask(data)
+    createTask( data )
+    navigate( '/tasks' )
   } )
 
 
@@ -22,8 +25,8 @@ export const TaskFormPage = () =>
           <textarea rows="10" placeholder="Description" { ...register( 'description' ) } className="w-full bg-purple-700 text-white px-4 py-2 my-2"></textarea>
 
           <button className='bg-purple-500 w-full hover:bg-purple-700 text-white font-semibold my-2 py-2 px-4 rounded-md'>
-          Save
-        </button>
+            Save
+          </button>
 
         </form>
 

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTasks } from "../context/TasksContext";
+import { TaskCard } from "../components/TaskCard";
 
 export function TasksPage ()
 {
@@ -8,17 +9,15 @@ export function TasksPage ()
   useEffect( () =>
   {
     getTasks()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [] )
 
-  if (tasks.length === 0) return (<h1>No tasks!</h1>)
+  if ( tasks.length === 0 ) return ( <h1>No tasks!</h1> )
 
-  return <div>
+  return <div className="grid grid-cols-3 gap-2">
     {
       tasks.map( task => (
-        <div key={ task._id }>
-          <h1>{ task.title }</h1>
-          <p>{ task.description }</p>
-        </div>
+        <TaskCard task={task} key={task._id}  />
       ) )
     }
   </div>
