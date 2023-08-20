@@ -10,7 +10,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://crud-auth-app-frontend.vercel.app/",
+    origin: "https://crud-auth-app-frontend.vercel.app",
+    methods: ["POST", "GET"],
     credentials: true
   })
 );
