@@ -15,6 +15,7 @@ export const RegisterPage = () =>
     {
         if ( isAuthenticated ) navigate( '/tasks' )
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ isAuthenticated ] )
 
     const onSubmit = handleSubmit( async ( values ) =>
